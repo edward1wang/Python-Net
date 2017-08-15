@@ -45,10 +45,16 @@ Task 1: Analyze exported NetManager database records for all switch connections 
 		
 	[dawang@charybdis netmanager]$ more connections.txt 
 		
-	Switch Type 1: 
+	Switch Type 1: 3524
 		S753,3,72,South Residence (Complex B),0,Unknown/Undefined,321B,,0-01-23,0013,Student Housing Services
 		S653,9,180,East Residence,310,Dundas,231,72004,,0013,Student Housing Services
 		S579,17,300,78 College Ave,427,78 College W.,18,226-971-1970,,300,Family Housing Services
+		
+		S726_RPC(240)_MainFloor#conf terminal
+		S726_RPC(240)_MainFloor(conf)#int fa0/10
+		S726_RPC(240)_MainFloor(conf)#description ?
+  		LINE  A character string describing this interface
+
 		
 	Switch Type 2: WS-C4006 Software, Version NmpSW: 8.4(10)GLX
 		S1130_3,33,142,Rozanski Hall,0,Unknown/Undefined,107,,01-02-B33,0080,Office of Registrarial Services
@@ -111,10 +117,33 @@ Task 1: Analyze exported NetManager database records for all switch connections 
 		# Split the record to a list:
 		(#Switch,#Port,#Building,#Facility,#RoomNumber,#Extension,#Jack Number,#CampusUnit)
 		
+		# Check if the #Switch.cfg file has been opened for appending
+		
+		# If not, open it
+		
 		# If #Switch is not the same as last record, 
 		
 			#Close current switch configuration file
 			#Open a new siwtch configuraiton file: #Switch.cfg
+		
+		# Format the switch interface configuration command based on the switch type: 
+		
+			# Switch type 1: 3524
+				
+			
+			# Switch type 2: 4000/4005 with CatOS
+			
+			# Switch type 3: 3550
+			
+			# Switch type 4: 2960
+			
+			# Switch type 5: 3750
+			
+			# Switch type 6: 3850
+			
+			
+		# Appending the following line to the #Switch.cfg file: 
+		# interface 
 			
 		
 		
