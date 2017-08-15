@@ -125,9 +125,9 @@ Building:#Building,Facility:#Facility,RoomNumber:#RoomNumber,JackNumber:#JackNum
 	# End of Function: Switch-Port-Numbers (#Switch, #Port)
 	
 	# Function: Switch-Conf-Command (#Switch-Number, #Port-Number)
-	# 	Return: #Switch-conf-Command
+	# 	Return: #Switch-Conf-Command
 	
-	# Switch type 1: 3524		
+		# Switch type 1: 3524		
 			
 		# Switch type 2: 4000/4005 with CatOS
 			
@@ -142,43 +142,43 @@ Building:#Building,Facility:#Facility,RoomNumber:#RoomNumber,JackNumber:#JackNum
 	# End of Function: Switch-Conf-Command (#Switch-Number, #Port-Number)
 	
 	
-	
-	Main Job: Process the records from connections.txt. 
+	# Function: Handle-Record 
+	# Process the records from connections.txt. 
 		
 		# Find and open file:connections.txt
 		
 		# Process every record from connections.txt
 		
-		# Read the record
+			# Read the record
 		
-		# If the record is not for switch connection (starting with Sxxx), skip to the next record. 
+			# If the record is not for switch connection (starting with Sxxx), skip to the next record. 
 		
-		# Split the record to a list:
-		(#Switch,#Port,#Building,#Facility,#RoomNumber,#Extension,#Jack Number,#CampusUnit)
+			# Split the record to a list:
+			(#Switch,#Port,#Building,#Facility,#RoomNumber,#Extension,#Jack Number,#CampusUnit)
 		
-		# Process #Switch and #Port to get the proper Switch and Port number
-		# def Switch-Port-Numbers (#Switch, #Port)
-		# Return: #Switch-Number and #Port-Number
+			# Process #Switch and #Port to get the proper Switch and Port number
+			# Call: Switch-Port-Numbers (#Switch, #Port)
+			# Return: #Switch-Number and #Port-Number
 		
-		# Check if the #Switch-Number.cfg file has been opened for appending
+			# Check if the #Switch-Number.cfg file has been opened for appending
 		
-		# If not, open it
+			# If not, open it
 		
-		# If #Switch-Number is not the same as last record, 
+			# If #Switch-Number is not the same as last record, 
 		
-			#Close current switch configuration file
-			#Open a new siwtch configuraiton file: #Switch-Number.cfg
+				#Close current switch configuration file
+				#Open a new siwtch configuraiton file: #Switch-Number.cfg
 		
-		# Format the switch interface configuration command based on the switch type
-		# def Switch-Conf-Command (#Switch-Number, #Port-Number)
-		# Return: #Switch-conf-Command
+			# Format the switch interface configuration command based on the switch type
+			# Call: Switch-Conf-Command (#Switch-Number, #Port-Number)
+			# Return: #Switch-conf-Command
 			
 			
-		# Appending the following line to the #Switch.cfg file: 
-		# interface #Port-Number
-		# description Building:#Building,Facility:#Facility,RoomNumber:#RoomNumber,JackNumber:#JackNumber,CampusUnit:#CampusUnit,Comments:#CurrentDes
-			
-		
+			# Appending the following line to the #Switch-Number.cfg file: 
+			# interface #Port-Number
+			# description #Switch-Conf-Command 
+	
+	# End of Function: Handle-Record 
 		
 Task 2: Update all switches with new port description commands
 
