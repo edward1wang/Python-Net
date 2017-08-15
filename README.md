@@ -32,31 +32,73 @@ Task 1: Analyze exported NetManager database records for all switch connections 
 
 	[dawang@charybdis netmanager]$ more connection.txt.note
 		Switch,Port,Building,Facility,Room Number,Extension,Jack Number,Campus Unit
-
+	
+	We will use the following information: 
+		Building,Facility,Room Number,Jack Number,Campus Unit
+	
+	At following format for all IOS switches (up to 200 characters): 
+	
+		Building:#Building,Facility:#Facility,RoomNumber:#RoomNumber,JackNumber:#JackNumber,CampusUnit:#CampusUnit
+		
+	At following format for CatOS switches (Name string must be less than 21 characters.)
+		#RoomNumber,#JackNumber
+		
 	[dawang@charybdis netmanager]$ more connections.txt 
 		
 	Switch Type 1: 
 		S753,3,72,South Residence (Complex B),0,Unknown/Undefined,321B,,0-01-23,0013,Student Housing Services
+		S653,9,180,East Residence,310,Dundas,231,72004,,0013,Student Housing Services
+		S579,17,300,78 College Ave,427,78 College W.,18,226-971-1970,,300,Family Housing Services
 		
-	Switch Type 2: 
+	Switch Type 2: WS-C4006 Software, Version NmpSW: 8.4(10)GLX
 		S1130_3,33,142,Rozanski Hall,0,Unknown/Undefined,107,,01-02-B33,0080,Office of Registrarial Services
 		
-	Switch Type 3: 
+		S1130_ROZH(142)r144> (enable) set port name 3/33 Rozanski Hall,0,Unknown/Undefined,107,
+		Name string must be less than 21 characters.
+		
+		
+	Switch Type 3: C3550 Software (C3550-IPBASEK9-M), Version 12.2(35)SE5, RELEASE SOFTWARE (fc1)
+	
 		S1236,14,35,Zoology Annex #2,0,Unknown/Undefined,101,,0A-A27,0158,Biological Science-Dean's Office
 		
-	Swith Type 4: 
+		S1236_ZooAn#2(35)L2#conf terminal
+		S1236_ZooAn#2(35)L2(config)#int fa0/14
+		S1236_ZooAn#2(35)L2(config-if)#description ?
+  		LINE  Up to 240 characters describing this interface
+		
+	Swith Type 4: C3550 Software (C3550-IPBASEK9-M), Version 12.2(35)SE5, RELEASE SOFTWARE (fc1)
+	
 		S1302_2,21,21,Zavitz Hall,0,Unknown/Undefined,313,,1A-D05,0064,CCS-Networking Services
 		
-	Switch Type 5: 
+		S1302_ZAV(21)1A#conf terminal 
+		S1302_ZAV(21)1A(config)#int gi2/0/21
+		S1302_ZAV(21)1A(config-if)#description ?
+  		LINE  Up to 240 characters describing this interface
+		
+	Switch Type 5: C3750E Software (C3750E-IPBASEK9-M), Version 15.0(1)SE3, RELEASE SOFTWARE (fc1)
+	
 		S1482_1,46,7,Creelman Hall,0,Unknown/Undefined,SRVR,,2A-A40,0014,Hospitality Services
 		
-	Switch Type 6: 
-		S1522_1,48,180,East Residence,310,Dundas,317,72083,,0013,Student Housing Services
+		S1482_CREEL(007)2A#conf terminal 
+		S1482_CREEL(007)2A(config)#int gi1/0/46
+		S1482_CREEL(007)2A(config-if)#description ?
+  		LINE  Up to 200 characters describing this interface
 		
-	Switch Type 7: 
+	Switch Type 6: WS-C3850-48P 
+		IOS-XE Software, Catalyst L3 Switch Software (CAT3K_CAA-UNIVERSALK9-M), Version 03.06.05E RELEASE SOFTWARE (fc2)
+		S1522_1,48,180,East Residence,310,Dundas,317,72083,,0013,Student Housing Services
 		S1611_2,7,140,Science Complex,0,Unknown/Undefined,4464,,4B-C07,0158,Biological Science-Dean's Office
 		
+		S1522_East_Dundas2-4#conf terminal 
+		S1522_East_Dundas2-4(config)#int gi1/0/48
+		S1522_East_Dundas2-4(config-if)#description ?
+  		LINE  Up to 200 characters describing this interface
 		
+	Switch Type 7: 4948
+		S1804,C3548-EN,00:02:16:4B:B9:40,192.168.132.107,Animal Science-Nutrition,033,Cabinet - Srv-C3
+Grid - H3,70
+		
+	
 	
 Task 2: Update all switches with new port description commands
 
