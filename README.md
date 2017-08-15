@@ -38,10 +38,10 @@ Task 1: Analyze exported NetManager database records for all switch connections 
 	
 	At following format for all IOS switches (up to 200 characters): 
 	
-		Building:#Building,Facility:#Facility,RoomNumber:#RoomNumber,JackNumber:#JackNumber,CampusUnit:#CampusUnit
+	Building:#Building,Facility:#Facility,RoomNumber:#RoomNumber,JackNumber:#JackNumber,CampusUnit:#CampusUnit,Comments:#CurrentDes
 		
 	At following format for CatOS switches (Name string must be less than 21 characters.)
-		#RoomNumber,#JackNumber
+		#RoomNumber,#JackNumber,#CurrentDes
 		
 	[dawang@charybdis netmanager]$ more connections.txt 
 		
@@ -66,7 +66,7 @@ Task 1: Analyze exported NetManager database records for all switch connections 
 		S1236_ZooAn#2(35)L2(config-if)#description ?
   		LINE  Up to 240 characters describing this interface
 		
-	Swith Type 4: C3550 Software (C3550-IPBASEK9-M), Version 12.2(35)SE5, RELEASE SOFTWARE (fc1)
+	Swith Type 4: WS-C2960S-48FPD-L 
 	
 		S1302_2,21,21,Zavitz Hall,0,Unknown/Undefined,313,,1A-D05,0064,CCS-Networking Services
 		
