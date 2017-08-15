@@ -33,16 +33,6 @@ Task 1: Analyze exported NetManager database records for all switch connections 
 	[dawang@charybdis netmanager]$ more connection.txt.note
 		Switch,Port,Building,Facility,Room Number,Extension,Jack Number,Campus Unit
 	
-	We will use the following information: 
-		Building,Facility,Room Number,Jack Number,Campus Unit
-	
-	At following format for all IOS switches (up to 200 characters): 
-	
-	Building:#Building,Facility:#Facility,RoomNumber:#RoomNumber,JackNumber:#JackNumber,CampusUnit:#CampusUnit,Comments:#CurrentDes
-		
-	At following format for CatOS switches (Name string must be less than 21 characters.)
-		#RoomNumber,#JackNumber,#CurrentDes
-		
 	[dawang@charybdis netmanager]$ more connections.txt 
 		
 	Switch Type 1: 3524
@@ -102,8 +92,57 @@ Task 1: Analyze exported NetManager database records for all switch connections 
 		
 	Switch Type 7: 4948
 		S1804,C3548-EN,00:02:16:4B:B9:40,192.168.132.107,Animal Science-Nutrition,033,Cabinet - Srv-C3 Grid - H3,70
+	
+	
+	We will use the following information: 
+		Building,Facility,Room Number,Jack Number,Campus Unit
+	
+	At following format for all IOS switches (up to 200 characters): 
+	
+Building:#Building,Facility:#Facility,RoomNumber:#RoomNumber,JackNumber:#JackNumber,CampusUnit:#CampusUnit,Comments:#CurrentDes
+		
+	At following format for CatOS switches (Name string must be less than 21 characters.)
+		#RoomNumber,#JackNumber,#CurrentDes
 		
 		
+		
+	
+	# Function: Switch-Port-Numbers (#Switch, #Port)
+	#	Return: #Switch-Number and #Port-Number
+	
+		# Switch type 1: 3524		
+			
+		# Switch type 2: 4000/4005 with CatOS
+			
+		# Switch type 3: 3550
+			
+		# Switch type 4: 2960
+			
+		# Switch type 5: 3750
+			
+		# Switch type 6: 3850
+	
+	# End of Function: Switch-Port-Numbers (#Switch, #Port)
+	
+	# Function: Switch-Conf-Command (#Switch-Number, #Port-Number)
+	# 	Return: #Switch-conf-Command
+	
+	# Switch type 1: 3524		
+			
+		# Switch type 2: 4000/4005 with CatOS
+			
+		# Switch type 3: 3550
+			
+		# Switch type 4: 2960
+			
+		# Switch type 5: 3750
+			
+		# Switch type 6: 3850
+	
+	# End of Function: Switch-Conf-Command (#Switch-Number, #Port-Number)
+	
+	
+	
 	Main Job: Process the records from connections.txt. 
 		
 		# Find and open file:connections.txt
@@ -117,33 +156,27 @@ Task 1: Analyze exported NetManager database records for all switch connections 
 		# Split the record to a list:
 		(#Switch,#Port,#Building,#Facility,#RoomNumber,#Extension,#Jack Number,#CampusUnit)
 		
-		# Check if the #Switch.cfg file has been opened for appending
+		# Process #Switch and #Port to get the proper Switch and Port number
+		# def Switch-Port-Numbers (#Switch, #Port)
+		# Return: #Switch-Number and #Port-Number
+		
+		# Check if the #Switch-Number.cfg file has been opened for appending
 		
 		# If not, open it
 		
-		# If #Switch is not the same as last record, 
+		# If #Switch-Number is not the same as last record, 
 		
 			#Close current switch configuration file
-			#Open a new siwtch configuraiton file: #Switch.cfg
+			#Open a new siwtch configuraiton file: #Switch-Number.cfg
 		
-		# Format the switch interface configuration command based on the switch type: 
-		
-			# Switch type 1: 3524
-				
-			
-			# Switch type 2: 4000/4005 with CatOS
-			
-			# Switch type 3: 3550
-			
-			# Switch type 4: 2960
-			
-			# Switch type 5: 3750
-			
-			# Switch type 6: 3850
+		# Format the switch interface configuration command based on the switch type
+		# def Switch-Conf-Command (#Switch-Number, #Port-Number)
+		# Return: #Switch-conf-Command
 			
 			
 		# Appending the following line to the #Switch.cfg file: 
-		# interface 
+		# interface #Port-Number
+		# description Building:#Building,Facility:#Facility,RoomNumber:#RoomNumber,JackNumber:#JackNumber,CampusUnit:#CampusUnit,Comments:#CurrentDes
 			
 		
 		
