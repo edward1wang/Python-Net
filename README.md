@@ -95,11 +95,29 @@ Task 1: Analyze exported NetManager database records for all switch connections 
   		LINE  Up to 200 characters describing this interface
 		
 	Switch Type 7: 4948
-		S1804,C3548-EN,00:02:16:4B:B9:40,192.168.132.107,Animal Science-Nutrition,033,Cabinet - Srv-C3
-Grid - H3,70
+		S1804,C3548-EN,00:02:16:4B:B9:40,192.168.132.107,Animal Science-Nutrition,033,Cabinet - Srv-C3 Grid - H3,70
 		
-	
-	
+		
+	Main Job: Process the records from connections.txt. 
+		
+		# Find and open file:connections.txt
+		
+		# Process every record from connections.txt
+		
+		# Read the record
+		
+		# If the record is not for switch connection (starting with Sxxx), skip to the next record. 
+		
+		# Split the record to a list:
+		(#Switch,#Port,#Building,#Facility,#RoomNumber,#Extension,#Jack Number,#CampusUnit)
+		
+		# If #Switch is not the same as last record, 
+		
+			#Close current switch configuration file
+			#Open a new siwtch configuraiton file: #Switch.cfg
+			
+		
+		
 Task 2: Update all switches with new port description commands
 
 
